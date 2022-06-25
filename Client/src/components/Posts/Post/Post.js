@@ -39,7 +39,10 @@ const Post = ({ post, setCurrentId }) => {
                     &nbsp; Like
                     {` ${post.likeCount}`}
                 </Button>
-                <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
+                <Button size="small" color="primary" onClick={() => 
+                        //dispatch(deletePost(post._id))
+                       ( post.creator === 'Ali' || post.creator === 'Mohamed Amine')  ?  alert('Cannot delete this event!') : dispatch(deletePost(post._id))
+                    }>
                     <DeleteIcon fontSize="small"/>
                     Delete
                 </Button>

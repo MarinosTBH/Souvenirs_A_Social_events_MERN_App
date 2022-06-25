@@ -18,13 +18,19 @@ const Form = ( {currentId, setCurrentId} ) =>{
 
     const handleSubmit= (e) =>{
         e.preventDefault();
+        if (!postData.creator) {
+            alert("Fill the form!")
+        }else {
+            if(currentId) {
+                dispatch(updatePost(currentId, postData))
+                clear();
 
-        if(currentId) {
-            dispatch(updatePost(currentId, postData))
-        } else {
-            dispatch(createPost(postData));
+            } else {
+                dispatch(createPost(postData));
+                clear();
+
+            }
         }
-        
         clear();
     };
 
@@ -36,7 +42,7 @@ const Form = ( {currentId, setCurrentId} ) =>{
     return(
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">{currentId ? 'Editing' : 'Creating' } a Souvenir</Typography>
+                <Typography variant="h6">{!currentId ? 'Creating' : 'Editing' } a Souvenir</Typography>
                 <TextField  
                     name="creator" 
                     variant="outlined" 

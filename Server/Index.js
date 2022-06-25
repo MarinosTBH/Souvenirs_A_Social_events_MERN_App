@@ -14,9 +14,13 @@ app.use(cors())
 
 app.use('/posts', postRoutes);
 
+app.get('/',(req,res)=>{
+    res.send('Hello to Souvernirs');
+});
+
 // DBConnection
 const CONNECTION_URL = 'mongodb+srv://Souvernirsdotcom:Souvernirs.com123@cluster0.zgqcl.mongodb.net/?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; //populated immediately by heroku
 
 mongoose.connect(CONNECTION_URL)
 .then(()=>app.listen(PORT, ()=>console.log(`Server running at Port : ${PORT}`)))
