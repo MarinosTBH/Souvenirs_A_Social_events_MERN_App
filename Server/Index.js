@@ -3,9 +3,10 @@ import bodyParser from 'body-parser' ;
 import mongoose from 'mongoose' ;
 import cors from 'cors' ;
 import postRoutes from './routes/posts.js';
+import dotenv from 'dotenv';
 
 const app = express();
-
+dotenv.config();
 //Limit received files to 30mb max
 app.use(bodyParser.json({limit : "30mb", extended : true})); 
 app.use(bodyParser.urlencoded({limit : "30mb", extended : true}));
@@ -23,5 +24,5 @@ mongoose.connect(CONNECTION_URL)
 
 
 // useNewUrlParser, useUnifiedTopology, useFindAndModify, and useCreateIndex are no longer supported options. Mongoose 6 always behaves as if useNewUrlParser, useUnifiedTopology, and useCreateIndex are true, and useFindAndModify is false.
-// , {useNewUrlParser: true, useUnifiedTopology: true}
+// , 
 // mongoose.set('useFindAndModify', false);

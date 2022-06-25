@@ -1,10 +1,13 @@
 import express from "express";
 
-import {getPosts, createPost} from '../controllers/posts.js'
+import {getPosts, createPost, updatePost, deletePost, likePost} from '../controllers/posts.js'
 
 const router = express.Router();
 
 router.get('/', getPosts);
-router.get('/', createPost);
+router.post('/', createPost); // ghalta matba3ya fil get blaset post 
+router.patch('/:id', updatePost);
+router.delete('/:id', deletePost);
+router.patch('/:id/likepost', likePost);
 
 export default router;
