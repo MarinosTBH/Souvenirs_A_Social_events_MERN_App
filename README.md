@@ -1,6 +1,6 @@
 Visit the app on this link : https://souvenirs-app-project.netlify.app 
 
-This project is a social media app youtube tuto of "JSMastery " to add and save important events.
+This project is a social media app youtube tuto that i followed of "JSMastery " to add and save important events.
 The app is a full-stack MERN app :
     -React + Redux, Node, Express, MongoDB
 
