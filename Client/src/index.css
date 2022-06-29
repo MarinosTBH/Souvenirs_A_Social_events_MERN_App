@@ -4,3 +4,15 @@ body{
     background-attachment: fixed;
     background-size: contain;
 }
+@media (max-width: 600px) {
+   body{
+    background-color: #330055;
+    background-image: url("https://flevix.com/wp-content/uploads/2021/05/Bubble-Background.svg");
+    background-attachment: fixed;
+    background-size: contain;
+    width:"1" ;
+    height:"1";
+} 
+}
+
+/* /* <img width="1" height="1" src="https://flevix.com/wp-content/uploads/2021/05/Bubble-Background.svg" class="single-featured-thumb wp-post-image"  */
