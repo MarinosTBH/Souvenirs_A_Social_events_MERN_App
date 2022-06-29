@@ -14,6 +14,7 @@ Caracteristiques :
             filebase64 reads the contents of a file at the given path and returns them as a base64-encoded string. filebase64(path) filebase64(path) Copy. The result is a Base64 representation of the raw bytes in the given file.
         redux : (managment state)  
         redux-thunk :( asynchronous actions using redux)
+        react-oauth/google (oauth google login & onetap )
 
     ####
     The backend server is working with : 
