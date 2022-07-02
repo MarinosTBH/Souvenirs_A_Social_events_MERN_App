@@ -22,4 +22,3 @@ const App = () => {
 }
 export default App;
 
-    {/* in : (Grow) to make it visible */}  {/* container (Grid) , to make it as a contain"er and gets props  */}

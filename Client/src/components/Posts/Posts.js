@@ -21,4 +21,5 @@ const Posts = ({ setCurrentId }) =>{
     )
 }
 
+    {/* in : (Grow) to make it visible */}  {/* container (Grid) , to make it as a contain"er and gets props  */}
 export default Posts;

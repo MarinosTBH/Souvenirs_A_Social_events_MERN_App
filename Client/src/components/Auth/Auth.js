@@ -9,36 +9,49 @@ import { useNavigate } from "react-router-dom";
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
-import Icon  from './Icon';
-import Souvenirs from "../../Images/Souvernirs.png";
 import useStyles from './Styles';
 import Input from './Input';
+import { signin, signup } from '../../actions/auth'
+
+const initialState = { firstName : '', lastName : '', email : '', password : '', confirmPassword : ''};
 
 const Auth = () => {
     const classes= useStyles();
     
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false) ;
+    const [formData, setFormData] = useState(initialState) ;
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleShowPassword =() => {
       setShowPassword((prevShowPassword) => !prevShowPassword)
     }
-    const handleChange = () => {}
-    const handleSubmit = () => {}
+    //handleChange of submit fields
+    const handleChange = (e) => {
+      setFormData( { ...formData, [e.target.name] : e.target.value } )
+    }
+    //submit
+    const handleSubmit = (e) => { 
+      e.preventDefault();
+      if (isSignUp) {
+        dispatch(signup(formData, navigate))
+      } else {
+        dispatch(signin(formData, navigate))
+      }
+    }
     const switchMode = () => {
       setIsSignUp((prevIsSignUp) => !prevIsSignUp)
-      handleShowPassword(false)
+      setShowPassword(false);
     }
     const GoogleSuccess = async (res) => {
       // //optional chaining operator // do not throw error if you dont access res object // only undefined
-      const credentials = (res.credential)
-      const creds = decodeToken(credentials);
-
-
+      const token = (res.credential)
+      const result = decodeToken(token);
+      console.log(result.googleId)
       try {
-        dispatch({type: AUTH, data: { creds }})
+        dispatch({type: AUTH, data: { result, token}})
 
         navigate('/');
       } catch (error) {
@@ -83,6 +96,7 @@ const Auth = () => {
                     // cookiePolicy={"single_host_origin"}
                     useOneTap
                     type='button'
+                    
                 />
             </GoogleOAuthProvider> 
 
@@ -98,9 +112,19 @@ const Auth = () => {
           </form>
         </Paper>
       </Container>
-      <img className={classes.image} src={Souvenirs} alt="icon" />
     </>
   )
 }
 
 export default Auth
+
+
+//hamma@hamma.com
+
+// {
+//   "name": "hamma hamma",
+//   "email": "hamma@hamma.com",
+//   "password": "$2a$12$WgXIPBziz0sPrbVKQgjY.e7DVjU/vk7TXWcNXRMErON6UqNp1E4MW",
+//   "_id": "62bf33ec13724d1a660022da",
+//   "__v": 0
+// }

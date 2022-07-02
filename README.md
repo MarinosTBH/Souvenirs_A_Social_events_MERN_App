@@ -15,6 +15,9 @@ Caracteristiques :
         redux : (managment state)  
         redux-thunk :( asynchronous actions using redux)
         react-oauth/google (oauth google login & onetap )
+        react-jwt : 
+            to decode token given from google auoauth/googleth
+        jwt-decode : to decode the back token and make new one
 
     ####
     The backend server is working with : 
@@ -29,13 +32,29 @@ Caracteristiques :
             Mongoose is a JavaScript object-oriented programming library that creates a connection between MongoDB and the Express web application framework.
         nodemon :
             nodemon is a command-line interface (CLI) utility developed by @rem that wraps your Node app, watches the file system, and automatically restarts the process.
+        jsonwebtokens : for token auth and expiry tokens
 
 
 
+
 ######
-######
-######
-        
-######
+import Souvenirs from "../../Images/Souvernirs.png";
 ######
 ###### delete this later 
+
+###
+Part 3 
+user story : 
+    - user = 
+        - neeeds account (google/raw account) / logout 
+        - token expires in 1 hour
+            - create a souvenir 
+            - edit its own souvenir
+            - delete its own souvenirs
+            - like other souvenirs 
+    -admin = add delete edit like log in / log out 
+
+things in common : 
+    -log in / log out.
+    -like other posts (and your onw post ofc)
+    -give exceptional token expiry
