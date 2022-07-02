@@ -6,6 +6,8 @@ import decode from "jwt-decode";
 import { AppBar, Typography, Toolbar, Button, Avatar} from '@material-ui/core';
 import BrandLogo   from '../../Images/BrandLogo.png';
 import useStyles  from "./Styles";
+// import LoginOutlinedIcon from '@material-ui/icons/LoginOutlinedIcon';
+
 
 const NavBar = () => {
     const classes = useStyles();
@@ -52,9 +54,9 @@ const NavBar = () => {
                     <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                 </div>
             ) : (
-                <Link to="/auth"><Button variant="contained" color="primary">Sign in</Button></Link>
-            )}
-        </Toolbar>
+                    <Link to="/auth"><Button variant="contained" color="primary">Sign In </Button></Link>
+                )}
+            </Toolbar>
     </AppBar>
   )
 }

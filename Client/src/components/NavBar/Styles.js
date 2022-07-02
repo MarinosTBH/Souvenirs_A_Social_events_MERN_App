@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '0',
-    background: 'transparent'
+    background: '#0d0c2d'
   },
   image: {
     marginLeft: '15px',
@@ -28,6 +28,7 @@ export default makeStyles((theme) => ({
   userName: {
     display: 'flex',
     alignItems: 'center',
+    color: 'white',
   },
   brandContainer: {
     display: 'flex',
@@ -43,5 +44,14 @@ export default makeStyles((theme) => ({
     height: '50%',
     opacity : "1",
     borderRadius: '50px',
+},
+[theme.breakpoints.down('sm')]: {
+  pruple: {
+    display: 'none',
+  },
+  logout: {
+    right: "70px",
+  }
+  
 },
 }));
