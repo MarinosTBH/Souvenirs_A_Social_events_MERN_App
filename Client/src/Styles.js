@@ -5,7 +5,10 @@ export default makeStyles((theme) => ({
     mainContainer: {
       flexDirection: "column-reverse",
     },
-
+    warningBanned: {
+      color : 'white',
+      overflowWrap : 'break-word' 
+    }
   },
 
 }));

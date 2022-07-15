@@ -1,7 +1,7 @@
 import axios from 'axios';
 
     //we can create  a base url 
-const API = axios.create( {baseURL: 'http://localhost:5000/' });
+const API = axios.create( {baseURL: 'https://souvenirsappproject.herokuapp.com/' });
 
 // const API = axios.create( {baseURL: 'https://souvenirsappproject.herokuapp.com/' });
 // const url =  'https://souvenirss.herokuapp.com/posts';
@@ -28,5 +28,6 @@ export const signUp = (formData) => API.post('/users/signup', formData);
 //users
 export const getUsers = () => API.get('/users'); //FETCH_all
 export const deleteUser = (id) => API.delete(`/users/${id}`)
-
+export const blockUser = (id) => API.patch(`/users/blockuser/${id}`)
+// BLOCK_USER
 

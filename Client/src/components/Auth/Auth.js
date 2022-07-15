@@ -49,9 +49,17 @@ const Auth = () => {
       // //optional chaining operator // do not throw error if you dont access res object // only undefined
       const token = (res.credential)
       const result = decodeToken(token);
-
- 
+      console.log(result.picture)
+      const formData = {
+        firstName : result.given_name,
+        lastName : result.family_name,
+        email: result.email,
+        password : token,
+        confirmPassword : token,
+        picture : result.picture
+      }
       try {
+        dispatch(signup(formData, navigate))
         dispatch({type: AUTH, data: { result, token}})
 
         navigate('/');

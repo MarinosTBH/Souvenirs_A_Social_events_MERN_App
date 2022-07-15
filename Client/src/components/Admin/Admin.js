@@ -9,18 +9,19 @@ import './style.css'
 import axios from 'axios';
 const Admin = () => {
  
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const userLocal = JSON.parse(localStorage.getItem('profile'));
 
     const dispatch = useDispatch();
 
+    const users = useSelector((state) => state.users)
+
     useEffect(() => {
         dispatch(getUsers())
-    },[]) 
+    },[users]) 
 
-    const users = useSelector((state) => state.users)
-        
+
   return ( 
-    user.result.role === "admin" ?
+    userLocal.result.role === "admin" ?
         <div className="scrollmenu">
                 {users.map((user) => (
                     <UserCard key={user._id} user={user}/>

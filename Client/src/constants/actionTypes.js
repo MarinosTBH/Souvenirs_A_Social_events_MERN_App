@@ -12,4 +12,5 @@ export const LOGOUT = 'LOGOUT';
 
 //users
 export const FETCH_U_ALL = 'FETCH_U_ALL';
-export const DELETE_USERS = 'DELETE_USERS';
+export const DELETE_USER = 'DELETE_USER';
+export const BLOCK_USER = 'BLOCK_USER';

@@ -31,7 +31,7 @@ export const signin = async (req, res) => {
 //signup 
 
 export const signup = async (req, res) => {
-  const { email, password, firstName, lastName, role } = req.body;
+  const { email, password, firstName, lastName, role, picture } = req.body;
 
   try {
     const oldUser = await UserModal.findOne({ email });
@@ -39,8 +39,8 @@ export const signup = async (req, res) => {
     if (oldUser) return res.status(400).json({ message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 12);
-
-    const result = await UserModal.create({ email, password: hashedPassword, role, name: `${firstName} ${lastName}` });
+    
+    const result = await UserModal.create({ email, password: hashedPassword, role, picture, name: `${firstName} ${lastName}` });
 
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 
@@ -66,11 +66,31 @@ export const getUsers = async (req, res) => {
     console.log(error);
   }
 }
-//delete users
+
+//block user
+export const blockUser = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No user with such id')
+
+  const user = await UserModal.findById(id)
+  const active = user.active
+
+  if (active) {
+    user.active = false
+  } else {
+    user.active = true
+  }
+
+  const userStatus = await UserModal.findByIdAndUpdate(id, {...user})
+
+  res.json({ message : `User ${!userStatus.active ? "blocked" : "unblocked"} successfully`});
+
+}
+//delete user
 export const deleteUser = async (req, res) => {
   const { id } = req.params
 
-  console.log(id)
   
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No user with such id')
 

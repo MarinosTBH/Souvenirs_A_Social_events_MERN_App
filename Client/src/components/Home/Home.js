@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
-import{ Container, Grow, Grid } from '@material-ui/core';
+import{ Container, Grow, Grid, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts' ;
 
@@ -13,10 +13,13 @@ const Home = () => {
     const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
 
+    const userLocal = JSON.parse(localStorage.getItem('profile'))
+
     useEffect(()=>{
         dispatch(getPosts());
     },[currentId, dispatch]);
   return (
+    !userLocal?.result?.active && !userLocal?.result?.email_verified && userLocal ? <Container><Typography variant="h2" className={classes.warningBanned}>you are banned! Go to contact</Typography></Container> :  
     <Grow in> 
         <Container >
         <Grid container className={classes.mainContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>

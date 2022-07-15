@@ -1,4 +1,20 @@
-@media only screen and (max-width: 600px) {
+.scrollmenu{
+    display: block;
+    align-items: center;
+  }
+.scrollmenu .scrollCont {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.486);
+    text-align: center;
+    padding: 10px;
+    margin:10px;
+    width: 90%;
+  }
+  .title  {
+    color:#333;
+  }
+
+@media  screen and (max-width: 668px) {
     
 
 .scrollmenu {
@@ -7,16 +23,18 @@
     white-space: nowrap;
     margin-top: 100px;
   }
-        .scrollmenu::-webkit-scrollbar {
-            display: none; /* safari chrome opera  */
-        }
-        .scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
+
+.scrollmenu::-webkit-scrollbar {
+    display: none; /* safari chrome opera  */
+}
+.scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+        
 .scrollmenu .scrollCont {
     display: inline-block;
-    color: rgba(255, 255, 255, 0.486);
+    /* color: rgba(255, 255, 255, 0.486); */
     text-align: center;
     padding: 10px;
     margin:10px;
@@ -27,21 +45,8 @@
   }
   
   .scrollmenu .scrollCont:hover {
-    background-color: rgba(119, 119, 119, 0.507);
+    background-color: rgba(224, 224, 224, 0.877);
   }
 }
-.scrollmenu{
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-.scrollmenu .scrollCont {
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.486);
-    text-align: center;
-    padding: 10px;
-    margin:10px;
-    width: 90%;
-  }
-  .title  {
-    color:#333;
-  }
+
+

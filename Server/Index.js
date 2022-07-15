@@ -33,6 +33,9 @@ mongoose.connect(CONNECTION_URL)
 .catch((error)=>console.log(error.message))
 
 
-// useNewUrlParser, useUnifiedTopology, useFindAndModify, and useCreateIndex are no longer supported options. Mongoose 6 always behaves as if useNewUrlParser, useUnifiedTopology, and useCreateIndex are true, and useFindAndModify is false.
+
+
+
+// useNewUrlParser, useUnifiedTopology, useFindAndModify, and useCreateIndex are no longer supported options. Mongoose 6 always behaves as if urseNewUlParser, useUnifiedTopology, and useCreateIndex are true, and useFindAndModify is false.
 // , 
 // mongoose.set('useFindAndModify', false);
