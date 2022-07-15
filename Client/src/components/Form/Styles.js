@@ -21,4 +21,8 @@ export default makeStyles((theme) => ({
   buttonSubmit: {
     marginBottom: 10,
   },
+  showAdd: {
+    margin: 'auto',
+    width: '100%',
+  },
 }));

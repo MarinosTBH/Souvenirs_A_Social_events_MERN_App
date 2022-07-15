@@ -1,11 +1,11 @@
-import {FETCH_ALL, CREATE, UPDATE, LIKE, DELETE} from "../constants/actionTypes"
+import { FETCH_ALL, CREATE, UPDATE, LIKE, DELETE } from "../constants/actionTypes"
 import * as api from '../api'; // import everything from actions as api
 
 //FETCH_ALL
 export const getPosts = () => async (dispatch) => {        //Redux Thunk is a function inside a function :: alows us to specify an additional func
     
     try {
-        const {data} = await api.fetchPosts();
+        const { data } = await api.fetchPosts();
         dispatch({type: FETCH_ALL, payload: data});
 
     } catch (error) {

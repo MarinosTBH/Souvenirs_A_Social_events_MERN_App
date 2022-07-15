@@ -1,4 +1,4 @@
-import { AUTH } from "../constants/actionTypes"
+import { AUTH, FETCH_ALL } from "../constants/actionTypes"
 import * as api from '../api/'; // import everything from actions as api
 
 export const signin = (formData, navigate) => async (dispatch) => {

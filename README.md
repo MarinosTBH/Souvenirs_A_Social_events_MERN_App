@@ -42,6 +42,11 @@ import Souvenirs from "../../Images/Souvernirs.png";
 ######
 ###### delete this later 
 
+###### Things i added
+    button to render form on small screens,
+    admin : (ability to edit delete all)
+    
+
 ###
 Part 3 
 user story : 

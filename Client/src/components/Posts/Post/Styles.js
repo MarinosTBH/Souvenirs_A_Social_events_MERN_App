@@ -19,6 +19,8 @@ export default makeStyles({
     justifyContent: 'space-between',
     borderRadius: '15px',
     height: '100%',
+    width: '90%',
+    margin : 'auto',
     position: 'relative',
     background: 'rgba(255, 255, 255, 0.892)',
   },
@@ -40,7 +42,7 @@ export default makeStyles({
   details: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '10px',
+    margin: '5px',
   },
   title: {
     padding: '0 1px',
@@ -54,6 +56,6 @@ export default makeStyles({
     padding: '0px',
   },
   message : {
-    padding: '0px 10px 5px 10px',
+    padding: '0px 8px 5px 8px',
   },
 });

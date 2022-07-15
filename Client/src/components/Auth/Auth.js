@@ -49,7 +49,8 @@ const Auth = () => {
       // //optional chaining operator // do not throw error if you dont access res object // only undefined
       const token = (res.credential)
       const result = decodeToken(token);
-      console.log(result.googleId)
+
+ 
       try {
         dispatch({type: AUTH, data: { result, token}})
 
@@ -93,20 +94,16 @@ const Auth = () => {
               <GoogleLogin
                     onSuccess={GoogleSuccess}
                     onError={GoogleFailure}
-                    // cookiePolicy={"single_host_origin"}
-                    useOneTap
-                    type='button'
-                    
+                    cookiePolicy="single_host_origin"
+                    useOneTap 
                 />
             </GoogleOAuthProvider> 
-
 
             <Grid container justifyContent="flex-end">
                 <Grid item >
                   <Button onClick={switchMode}>
                     {isSignUp ? 'Already have an account? Sign In ' : "Don't have an account? Sign Up"}
                   </Button>
-                  
                 </Grid>
             </Grid>
           </form>

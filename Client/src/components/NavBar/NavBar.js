@@ -6,7 +6,9 @@ import decode from "jwt-decode";
 import { AppBar, Typography, Toolbar, Button, Avatar} from '@material-ui/core';
 import BrandLogo   from '../../Images/BrandLogo.png';
 import useStyles  from "./Styles";
-// import LoginOutlinedIcon from '@material-ui/icons/LoginOutlinedIcon';
+
+const avatarPlaceholder= "https://png.pngtree.com/png-clipart/20190619/original/pngtree-vector-avatar-icon-png-image_4017288.jpg"
+const logoutIcon ="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-logout-icon-png-image_4233257.jpg"
 
 
 const NavBar = () => {
@@ -21,7 +23,7 @@ const NavBar = () => {
     const logout = () => {
         dispatch({type: LOGOUT})
 
-        navigate('/')
+        navigate('/auth')
         
         setUser(null)
     };
@@ -42,16 +44,17 @@ const NavBar = () => {
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
         <div className={classes.brandContainer}>
-            <Link to="/"><img className={classes.brandLogo} src={BrandLogo}/></Link>
+            {!user && <Link to="/"><img className={classes.brandLogo} src={BrandLogo}/></Link>}
         </div>
         <Toolbar className={classes.toolbar}>
             {user ? (
                 <div className={classes.profile}>
-                    <Avatar className={classes.pruple} alt={user.result.name} src={user.result.picture}>
+                    <Link to="/"><Avatar className={classes.pruple} alt={user.result.name} src={user.result.picture || avatarPlaceholder}>
                         {user.result.name}                        
-                    </Avatar>
-                    <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                    <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
+                    </Avatar></Link>
+                    <Typography className={classes.userName} variant="h6">{user.result.name.split(" ")[0]}</Typography>
+                    {user.result.role === "admin" && <Link to="/admin" style={{margin : 'auto 0'}}><Typography className={classes.userName} variant="h6">Users</Typography></Link>}
+                    <Button variant="contained" className={classes.logout} color="secondary" onClick={logout} ><Avatar src={logoutIcon}></Avatar></Button>
                 </div>
             ) : (
                     <Link to="/auth"><Button variant="contained" color="primary">Sign In </Button></Link>

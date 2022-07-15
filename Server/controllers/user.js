@@ -2,11 +2,13 @@
 
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 import UserModal from "../models/user.js";
 
 const secret = 'test';
 
+//sign in 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -26,9 +28,10 @@ export const signin = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+//signup 
 
 export const signup = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, firstName, lastName, role } = req.body;
 
   try {
     const oldUser = await UserModal.findOne({ email });
@@ -37,7 +40,7 @@ export const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const result = await UserModal.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+    const result = await UserModal.create({ email, password: hashedPassword, role, name: `${firstName} ${lastName}` });
 
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 
@@ -48,3 +51,31 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//fetch users
+
+export const getUsers = async (req, res) => {
+  try {
+    const users = await UserModal.find();
+    res.status(200).json(users)
+    
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong2" });
+    console.log(error);
+  }
+}
+//delete users
+export const deleteUser = async (req, res) => {
+  const { id } = req.params
+
+  console.log(id)
+  
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No user with such id')
+
+  await UserModal.findByIdAndRemove(id);
+
+  res.json({ message : 'User deleted successfully' });
+    
+}
