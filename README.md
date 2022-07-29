@@ -1,4 +1,4 @@
-This project is a social media app to add and save important events.
+This project is a social media app to add and save important souvenirs.
 The app is a full-stack MERN app :
     -React + Redux, Node, Express, MongoDB
 
