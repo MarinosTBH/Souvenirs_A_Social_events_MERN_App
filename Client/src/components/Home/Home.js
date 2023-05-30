@@ -5,7 +5,7 @@ import{ Container, Grow, Grid, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts' ;
 
-import useStyles  from "../../styles";
+import useStyles from '../../Styles'
 
 const Home = () => {
     const classes = useStyles();
